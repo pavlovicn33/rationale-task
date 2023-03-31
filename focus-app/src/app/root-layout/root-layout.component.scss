@@ -1,0 +1,67 @@
+@use "../../shared/styles/mixins" as m;
+
+.sidenav {
+  height: 100%;
+  width: 60px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: var(--blue);
+  overflow-x: hidden;
+
+  .sidenav-buttons {
+    margin-top: 53.5px;
+  }
+
+  div {
+    margin-top: 6px;
+    a {
+      display: flex;
+      height: 57px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 5px;
+
+      &:hover img {
+        filter: invert(46%) sepia(49%) saturate(2404%) hue-rotate(181deg)
+          brightness(96%) contrast(96%);
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: white;
+      }
+
+      &:hover span {
+        color: var(--blue);
+      }
+      span {
+        font-family: "metropolis";
+        text-align: center;
+        @include m.text(10px, "normal", 400, 10px);
+        color: white;
+      }
+    }
+  }
+
+  .pulse-icon {
+    margin-bottom: 70px;
+  }
+}
+
+.nav-bar {
+  margin-left: 105px;
+  height: 50px;
+  .nav {
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.main {
+ 
+}
