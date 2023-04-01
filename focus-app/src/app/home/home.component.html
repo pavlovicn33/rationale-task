@@ -1,19 +1,75 @@
 <div class="container">
-    <div class="header">
-        <h2>Waiting your Action</h2>
-        <img src="../../assets/icons/arrow.png" alt="arrows">
+  <div class="header">
+    <h2>Waiting your Action</h2>
+    <img src="../../assets/icons/arrow.png" alt="arrows" />
+  </div>
+  <div class="tabs-list">
+    <div class="cards-container">
+      <div class="cards">
+        <app-card *ngFor="let i of cards" [data]="i"></app-card>
+      </div>
+      <div class="item-button">
+        <button>+ Quick item</button>
+      </div>
     </div>
-    <div class="tabs-list">
-        <div class="cards-container">
-            <div class="cards" >
-                <app-card *ngFor="let i of cards" [data]="i"></app-card>
+  </div>
+  <div class="section-1">
+    <table>
+      <tr class="table-head">
+        <th>Date</th>
+        <th colspan="2">Title</th>
+        <th>Business Unit</th>
+        <th [style.width]="'350px'">With User</th>
+        <th [style.width]="'150px'">Delay</th>
+        <th [style.width]="'200px'">Status</th>
+      </tr>
+      <tbody *ngFor="let i of table">
+        <div class="separator"></div>
+        <tr class="table-data">
+          <span
+            [style.background-color]="setColor(i.status, false)"
+            class="decoration"
+          ></span>
+          <td>
+            <div class="container-date">
+              <div>
+                <p [style.color]="setColor(i.status, false)" class="month">
+                  {{ i.date | date : "MMM" }}
+                </p>
+                <p [style.color]="setColor(i.status, false)" class="day">
+                  {{ i.date | date : "d" }}
+                </p>
+              </div>
+              <hr class="vertical" />
             </div>
-            <div class="item-button">
-                <button>+ Quick item</button>
-            </div>
-        </div>
-    </div>
-    <div class="section-1">
-
-    </div>
+          </td>
+          <td>{{ i.title }}</td>
+          <td>{{ i.businessUnit }}</td>
+          <td class="profile-container">
+            <hr class="vertical" />
+            <img
+              *ngIf="i.userImg"
+              src="../../assets/img/{{ i.userImg }}.png"
+              alt="profile-pic"
+            />
+          </td>
+          <td class="delay">
+            <span *ngIf="i.status == 'Rejected'"> {{ i.delay }}</span>
+          </td>
+          <td  class="status">
+            <button class="eye">
+              <img src="../../assets/icons/eye.png" alt="eye" />
+            </button>
+            <button
+              [style.background-color]="setColor(i.status, true)"
+              [style.color]="setColor(i.status, false)"
+              class="status-button"
+            >
+              {{ i.status }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

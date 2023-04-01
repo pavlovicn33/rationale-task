@@ -17,6 +17,7 @@
   div {
     margin-top: 6px;
     a {
+      text-decoration: none;
       display: flex;
       height: 57px;
       justify-content: center;
@@ -67,11 +68,10 @@
 }
 
 .main {
-  background-color:var(--background);
+  background-color: var(--background);
   margin-left: 60px;
-  
-  .router{
-  
+
+  .router {
     width: 95%;
     margin: 0 auto;
   }

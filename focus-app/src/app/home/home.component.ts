@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cards } from 'src/shared/models/cards';
+import { ItemsList, TableData } from 'src/shared/models/tableData';
+import { DataService } from 'src/shared/services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +10,9 @@ import { Cards } from 'src/shared/models/cards';
 })
 export class HomeComponent implements OnInit {
   cards: Cards[] = [];
+  table: ItemsList[] = [];
 
-  constructor() {
+  constructor(private service: DataService) {
     this.cards = [
       {
         icon: 'meetings',
@@ -44,5 +47,32 @@ export class HomeComponent implements OnInit {
     ];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getTable();
+  }
+
+  getTable() {
+    this.service.getTableData().subscribe((data: TableData) => {
+      this.table = data.itemsList;
+      console.log(this.table);
+    });
+  }
+
+  setColor(status: string, opacity: boolean) {
+    let code = '';
+    if (status == 'Approved') {
+      code = '#5CB85C';
+    }
+    if (status == 'In Progress') {
+      code = '#FFB017';
+    }
+
+    if (status == 'Rejected') {
+      code = '#EA4335';
+    }
+    if (opacity) {
+      code += '26';
+    }
+    return code;
+  }
 }

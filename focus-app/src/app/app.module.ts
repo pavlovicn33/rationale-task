@@ -7,6 +7,9 @@ import { RootLayoutComponent } from './root-layout/root-layout.component';
 import { MeetingsComponent } from './meetings/meetings.component';
 import { HomeComponent } from './home/home.component';
 import { CardComponent } from './components/card/card.component';
+import { SharedModule } from 'src/shared/shared.module';
+import { ItemsComponent } from './items/items.component';
+import { ActionsComponent } from './actions/actions.component';
 
 @NgModule({
   declarations: [
@@ -14,9 +17,12 @@ import { CardComponent } from './components/card/card.component';
     RootLayoutComponent,
     MeetingsComponent,
     HomeComponent,
-    CardComponent
+    CardComponent,
+    ItemsComponent,
+    ActionsComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
   ],
