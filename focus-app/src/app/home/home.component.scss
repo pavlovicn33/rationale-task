@@ -1,0 +1,49 @@
+@use "../../shared/styles/mixins" as m;
+
+* {
+  font-family: "metropolis", sans-serif;
+}
+
+.header {
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 17px;
+
+  img {
+    position: fixed;
+    z-index: 1;
+    right: 0;
+  }
+  h2 {
+    @include m.text(14px, "normal", 500, 14px);
+  }
+}
+
+.cards-container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 52px;
+  .cards {
+    display: flex;
+    gap: 15px;
+  }
+
+  .item-button {
+    button {
+      background-color: var(--blue);
+      border-radius: 5px;
+      width: 120px;
+      height: 30px;
+      border: none;
+
+      @include m.text(14px, "normal", 500, 12px);
+      color: white;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

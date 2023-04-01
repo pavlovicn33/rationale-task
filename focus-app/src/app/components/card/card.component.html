@@ -1,0 +1,15 @@
+<div class="card-container">
+  <div class="card">
+    <div class="card-header">
+      <img
+        [style.background-color]="data.color ? data.color : 'gray'"
+        src="../../../assets/icons/{{ data.icon }}.png"
+        alt="icons"
+      />
+      <p>{{ data.quantity }}</p>
+    </div>
+    <div class="name">
+      <p>{{ data.name }}</p>
+    </div>
+  </div>
+</div>

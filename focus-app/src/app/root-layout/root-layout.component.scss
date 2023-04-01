@@ -59,9 +59,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .notification-button {
+      margin-right: 10px;
+    }
   }
 }
 
 .main {
- 
+  background-color:var(--background);
+  margin-left: 60px;
+  
+  .router{
+  
+    width: 95%;
+    margin: 0 auto;
+  }
 }

@@ -1,0 +1,42 @@
+@use "../../../shared/styles/mixins" as m;
+
+.card-container {
+  .card {
+    width: 122px;
+    height: 71px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(160, 160, 160, 0.1);
+    border-radius: 5px;
+
+    .card-header {
+        padding-top: 9px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 80%;
+      margin: auto;
+      img {
+        width: 31px;
+        height: 31px;
+        border-radius: 50%;
+        object-fit: scale-down;
+      }
+
+      p{
+        @include m.text(14px, "normal", 500, 12px);
+
+      }
+    }
+
+    .name {
+        padding-top: 10px;
+      width: 80%;
+      margin: auto;
+      p {
+        font-size: 12px;
+        line-height: 12px;
+        @include m.text(12px, "normal", 400, 12px);
+      }
+    }
+  }
+}
