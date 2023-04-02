@@ -93,7 +93,6 @@
           width: 30px;
           margin-left: -55px;
           margin-right: 0px;
-          text-align: center;
         }
 
         .month {
@@ -176,5 +175,20 @@
 
   .separator {
     height: 8px;
+  }
+}
+
+.section-2 {
+  .board-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .table-data {
+    p {
+      margin-left: -35px !important;
+    }
   }
 }

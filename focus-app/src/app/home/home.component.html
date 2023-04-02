@@ -57,7 +57,7 @@
           <td class="delay">
             <span *ngIf="i.status == 'Rejected'"> {{ i.delay }}</span>
           </td>
-          <td  class="status">
+          <td class="status">
             <button class="eye">
               <img src="../../assets/icons/eye.png" alt="eye" />
             </button>
@@ -74,7 +74,17 @@
     </table>
   </div>
   <div class="section-2">
-    <app-board [boardData]="tasks" [header]="'Tasks you initiated'" [subHeader]="'Stay tuned with tasks you initiated'"></app-board>
-    <app-board [boardData]="actions" [header]="'Overdue Actions'" [subHeader]="'You`re late, hurry up!'"></app-board>
+    <div class="board-container">
+      <app-board
+        [boardData]="tasks"
+        [header]="'Tasks you initiated'"
+        [subHeader]="'Stay tuned with tasks you initiated'"
+      ></app-board>
+      <app-board
+        [boardData]="actions"
+        [header]="'Overdue Actions'"
+        [subHeader]="'You`re late, hurry up!'"
+      ></app-board>
+    </div>
   </div>
 </div>

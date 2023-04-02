@@ -1,5 +1,26 @@
-<div>
-    <div>
-        
+<div class="container">
+  <div class="board-wrapper">
+    <h2 [ngStyle]="{ color: header == 'Overdue Actions' ? 'var(--red)' : '' }">
+      {{ header }}
+    </h2>
+    <p>{{ subHeader }}</p>
+    <hr />
+    <div class="board-main" *ngFor="let i of boardData">
+      <div class="board-desc">
+        <img src="../../assets/img/{{ i.img }}.png" alt="" />
+        <div class="title-container">
+          <h3>{{ i.title }}</h3>
+          <h4>{{ i.subtitle }}</h4>
+        </div>
+      </div>
+      <div class="board-data">
+        <div>
+          <div [style.text-align]="'end'" [style.margin-bottom]="'5px'">
+            <span class="date">22 may</span>
+          </div>
+          <div class="progress-bar"><div  [style.width]="i.progress + '%'" [ngStyle]="{'background-color': i.progress <= 40 ? 'var(--red)' : i.progress >= 41 && i.progress <= 60 ? '#FE993B' : i.progress >= 61 && i.progress <= 80 ? 'var(--blue)' : i.progress > 80 ? 'var(--green)' : ''}"><span>{{i.progress}}%</span></div></div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

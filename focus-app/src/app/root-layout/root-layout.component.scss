@@ -70,7 +70,7 @@
 .main {
   background-color: var(--background);
   margin-left: 60px;
-
+  height: calc(100vh - 50px);
   .router {
     width: 95%;
     margin: 0 auto;

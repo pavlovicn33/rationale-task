@@ -52,12 +52,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getTable();
+    this.getTasks()
+    this.getActions()
   }
 
   getTable() {
     this.service.getTableData().subscribe((data: TableData) => {
       this.table = data.itemsList;
-      console.log(this.table);
     });
   }
 

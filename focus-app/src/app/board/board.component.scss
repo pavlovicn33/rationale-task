@@ -1,0 +1,85 @@
+@use "../../shared/styles/mixins" as m;
+
+.container {
+
+  color: var(--text-dark);
+}
+
+.board-wrapper {
+  box-shadow: 0px 0px 20px rgba(154, 154, 154, 0.1);
+  border-radius: 10px;
+  height: 291px;
+  background-color: rgb(255, 255, 255);
+  width: 620px;
+
+  h2 {
+    padding-top: 16px;
+    margin-left: 20px;
+    @include m.text(14px, "normal", 500, 14px);
+  }
+  p {
+    margin-top: 4px;
+    margin-left: 20px;
+    @include m.text(12px, "normal", 500, 12px);
+    color: #8598ad;
+    margin-bottom: 13.5px;
+  }
+
+  hr {
+    border-top: 0.7px;
+    color: var(--gray);
+  }
+
+  .board-main:first-of-type {
+    margin-top: 15px;
+  }
+
+  .board-main {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    .board-desc {
+      display: flex;
+      margin-left: 20px;
+      .title-container {
+        margin-left: 16px;
+
+        h3 {
+          @include m.text(13px, "normal", 500, 13px);
+        }
+
+        h4 {
+          @include m.text(12px, "normal", 500, 12px);
+          color: #8598ad;
+        }
+      }
+    }
+
+    .board-data {
+      margin-right: 20px;
+      .progress-bar {
+        width: 59px;
+        border-radius: 6.5px;
+        height: 13px;
+        background-color: #cbcbcb;
+        div {
+          background-color: red;
+          height: 100%;
+          border-radius: 6.5px;
+          span {
+            color: white;
+            margin-left: 6px;
+            display: flex;
+            padding-top: 2px;
+            @include m.text(10px, "normal", 500, 10px);
+          }
+        }
+      }
+
+      .date {
+        color: #8598ad;
+        @include m.text(12px, "normal", 400, 12px);
+      }
+    }
+  }
+}
