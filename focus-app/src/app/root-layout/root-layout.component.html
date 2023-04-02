@@ -31,9 +31,33 @@
     <div>
       <img src="../../assets/icons/focus logo.svg" alt="focus logo" />
     </div>
-    <div class="notification-button">
-      <img src="../../assets/icons/notification.png" alt="notification" />
+    <div
+      [ngClass]="status ? 'show' : 'hide'"
+      (click)="toggleDropdown()"
+      [title]="notificationCount"
+      class="notification-button"
+    >
+      <img
+        *ngIf="dropdownState == 'closed'"
+        src="../../assets/icons/notification1.png"
+        alt="notification"
+      />
+      <img
+        *ngIf="dropdownState == 'open'"
+        src="../../assets/icons/notification2.png"
+        alt="notification1"
+      />
     </div>
+  </div>
+  <div
+    tabindex="0"
+    #myDiv
+    class="dropdown-content"
+    [@dropdown]="dropdownState"
+    (blur)="hideDropdown()"
+  >
+    <button><span>Notification 1</span></button>
+    <button><span>Notification 2</span></button>
   </div>
 </div>
 <div class="main">
