@@ -1,7 +1,31 @@
-<div class="container">
+<div
+  [ngStyle]="{
+    'margin-right.px': isOpen ? 389 : 0,
+    transition: 'margin-right 0.4s ease'
+  }"
+  class="container"
+>
+  <div class="sidebar" [@openClose]="isOpen ? 'open' : 'closed'">
+    <div class="sidebar-content">
+      <div class="sidebar-header">
+        <h2>Calendar</h2>
+        <img
+          width="12px"
+          height="12px"
+          (click)="test()"
+          src="../../assets/icons/exit.png"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
   <div class="header">
     <h2>Waiting your Action</h2>
-    <img src="../../assets/icons/arrow.png" alt="arrows" />
+    <img
+      (click)="toggleSidebar()"
+      src="../../assets/icons/arrow.png"
+      alt="arrows"
+    />
   </div>
   <div class="tabs-list">
     <div class="cards-container">
@@ -19,7 +43,13 @@
         <th>Date</th>
         <th colspan="2">Title</th>
         <th>Business Unit</th>
-        <th [style.width]="'350px'">With User</th>
+        <th
+          [ngClass]="{ 'sidebar-open': isOpen }"
+          [style.transition]="'0.4s ease-in'"
+          [style.width]="'350px'"
+        >
+          With User
+        </th>
         <th [style.width]="'150px'">Delay</th>
         <th [style.width]="'200px'">Status</th>
       </tr>
@@ -33,10 +63,18 @@
           <td>
             <div class="container-date">
               <div>
-                <p [style.color]="setColor(i.status, false)" class="month">
+                <p
+                  [ngClass]="{ 'sidebar-open-dates': isOpen }"
+                  [style.color]="setColor(i.status, false)"
+                  class="month"
+                >
                   {{ i.date | date : "MMM" }}
                 </p>
-                <p [style.color]="setColor(i.status, false)" class="day">
+                <p
+                  [ngClass]="{ 'sidebar-open-dates': isOpen }"
+                  [style.color]="setColor(i.status, false)"
+                  class="day"
+                >
                   {{ i.date | date : "d" }}
                 </p>
               </div>
@@ -54,8 +92,14 @@
               alt="profile-pic"
             />
           </td>
-          <td class="delay">
-            <span *ngIf="i.status == 'Rejected'"> {{ i.delay }}</span>
+          <td [ngClass]="{ 'sidebar-delay-td': isOpen }" class="delay">
+            <hr class="hide-hr" [ngClass]="{ 'sidebar-table-hr ': isOpen }" />
+            <span
+              [ngClass]="{ 'sidebar-delay': isOpen }"
+              *ngIf="i.status == 'Rejected'"
+            >
+              {{ i.delay }}</span
+            >
           </td>
           <td class="status">
             <button class="eye">
@@ -74,13 +118,15 @@
     </table>
   </div>
   <div class="section-2">
-    <div class="board-container">
+    <div [ngClass]="{ 'sidebar-boards': isOpen }"  class="board-container">
       <app-board
+        [boardClass]="boardClass"
         [boardData]="tasks"
         [header]="'Tasks you initiated'"
         [subHeader]="'Stay tuned with tasks you initiated'"
       ></app-board>
       <app-board
+        [boardClass]="boardClass"
         [boardData]="actions"
         [header]="'Overdue Actions'"
         [subHeader]="'You`re late, hurry up!'"

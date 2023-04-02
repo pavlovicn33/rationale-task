@@ -52,6 +52,7 @@
   <div
     tabindex="0"
     #myDiv
+    [style.pointer-events]="status ? 'none' : 'all'"
     class="dropdown-content"
     [@dropdown]="dropdownState"
     (blur)="hideDropdown()"

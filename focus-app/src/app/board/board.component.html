@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="board-wrapper">
+  <div [ngClass]="boardClass" class="board-wrapper">
     <h2 [ngStyle]="{ color: header == 'Overdue Actions' ? 'var(--red)' : '' }">
       {{ header }}
     </h2>
@@ -18,7 +18,25 @@
           <div [style.text-align]="'end'" [style.margin-bottom]="'5px'">
             <span class="date">22 may</span>
           </div>
-          <div class="progress-bar"><div  [style.width]="i.progress + '%'" [ngStyle]="{'background-color': i.progress <= 40 ? 'var(--red)' : i.progress >= 41 && i.progress <= 60 ? '#FE993B' : i.progress >= 61 && i.progress <= 80 ? 'var(--blue)' : i.progress > 80 ? 'var(--green)' : ''}"><span>{{i.progress}}%</span></div></div>
+          <div class="progress-bar">
+            <div
+              [style.width]="i.progress + '%'"
+              [ngStyle]="{
+                'background-color':
+                  i.progress <= 40
+                    ? 'var(--red)'
+                    : i.progress >= 41 && i.progress <= 60
+                    ? '#FE993B'
+                    : i.progress >= 61 && i.progress <= 80
+                    ? 'var(--blue)'
+                    : i.progress > 80
+                    ? 'var(--green)'
+                    : ''
+              }"
+            >
+              <span>{{ i.progress }}%</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

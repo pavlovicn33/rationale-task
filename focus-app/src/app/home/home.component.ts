@@ -3,18 +3,46 @@ import { Cards } from 'src/shared/models/cards';
 import { ItemsList, TableData } from 'src/shared/models/tableData';
 import { Actions, Task, Tasks } from 'src/shared/models/tasks';
 import { DataService } from 'src/shared/services/data.service';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('openClose', [
+      state(
+        'closed',
+        style({
+          transform: 'translateX(0)',
+          visibility: 'hidden',
+        })
+      ),
+      state(
+        'open',
+        style({
+          transform: 'translateX(-344px)',
+          visibility: 'visible',
+        })
+      ),
+      transition('closed => open', [animate('0.300s')]),
+      transition('open => closed', [animate('0.300s')]),
+    ]),
+  ],
 })
 export class HomeComponent implements OnInit {
   cards: Cards[] = [];
   table: ItemsList[] = [];
   tasks: Task[] = [];
   actions: Task[] = [];
-
+  isOpen: boolean = false;
+  boardClass: string = '';
   constructor(private service: DataService) {
     this.cards = [
       {
@@ -52,8 +80,18 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getTable();
-    this.getTasks()
-    this.getActions()
+    this.getTasks();
+    this.getActions();
+  }
+
+  toggleSidebar() {
+    this.boardClass = 'sidebar-opened';
+    this.isOpen = !this.isOpen;
+  }
+
+  test() {
+    this.isOpen = false;
+    this.boardClass = 'sidebar-closed';
   }
 
   getTable() {
@@ -82,12 +120,12 @@ export class HomeComponent implements OnInit {
 
   getTasks() {
     this.service.getTasks().subscribe((data: Tasks) => {
-      this.tasks = data.tasks
+      this.tasks = data.tasks;
     });
   }
   getActions() {
     this.service.getActions().subscribe((data: Actions) => {
-      this.actions = data.actions
+      this.actions = data.actions;
     });
   }
 }

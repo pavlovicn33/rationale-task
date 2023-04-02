@@ -1,7 +1,6 @@
 @use "../../shared/styles/mixins" as m;
 
 .container {
-
   color: var(--text-dark);
 }
 
@@ -10,7 +9,7 @@
   border-radius: 10px;
   height: 291px;
   background-color: rgb(255, 255, 255);
-  width: 620px;
+  width: 750px;
 
   h2 {
     padding-top: 16px;
@@ -81,5 +80,23 @@
         @include m.text(12px, "normal", 400, 12px);
       }
     }
+  }
+}
+.sidebar-opened {
+  width: 600px !important;
+  transition: 0.4s ease-in-out;
+}
+
+.sidebar-closed {
+  width: 750px !important;
+  transition: 0.4s ease-in-out;
+}
+
+@media screen and (max-width: 1700px) {
+  .board-wrapper {
+    width: 620px;
+  }
+  .sidebar-opened {
+    width: 460px !important;
   }
 }

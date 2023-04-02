@@ -21,7 +21,7 @@ import { BoardComponent } from './board/board.component';
     CardComponent,
     ItemsComponent,
     ActionsComponent,
-    BoardComponent
+    BoardComponent,
   ],
   imports: [
     SharedModule,

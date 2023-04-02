@@ -8,11 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BoardComponent implements OnInit {
   @Input()
   boardData: any;
-
   @Input()
   header: string = '';
   @Input()
   subHeader: string = '';
+  @Input()
+  boardClass: string = '';
 
   constructor() {}
 
