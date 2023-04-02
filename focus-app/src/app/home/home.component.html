@@ -47,6 +47,7 @@
           <td>{{ i.businessUnit }}</td>
           <td class="profile-container">
             <hr class="vertical" />
+            <span class="placeholder" *ngIf="!i.userImg">--</span>
             <img
               *ngIf="i.userImg"
               src="../../assets/img/{{ i.userImg }}.png"
@@ -71,5 +72,9 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="section-2">
+    <app-board [boardData]="tasks" [header]="'Tasks you initiated'" [subHeader]="'Stay tuned with tasks you initiated'"></app-board>
+    <app-board [boardData]="actions" [header]="'Overdue Actions'" [subHeader]="'You`re late, hurry up!'"></app-board>
   </div>
 </div>

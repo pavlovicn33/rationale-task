@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cards } from 'src/shared/models/cards';
 import { ItemsList, TableData } from 'src/shared/models/tableData';
+import { Actions, Task, Tasks } from 'src/shared/models/tasks';
 import { DataService } from 'src/shared/services/data.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { DataService } from 'src/shared/services/data.service';
 export class HomeComponent implements OnInit {
   cards: Cards[] = [];
   table: ItemsList[] = [];
+  tasks: Task[] = [];
+  actions: Task[] = [];
 
   constructor(private service: DataService) {
     this.cards = [
@@ -74,5 +77,16 @@ export class HomeComponent implements OnInit {
       code += '26';
     }
     return code;
+  }
+
+  getTasks() {
+    this.service.getTasks().subscribe((data: Tasks) => {
+      this.tasks = data.tasks
+    });
+  }
+  getActions() {
+    this.service.getActions().subscribe((data: Actions) => {
+      this.actions = data.actions
+    });
   }
 }
