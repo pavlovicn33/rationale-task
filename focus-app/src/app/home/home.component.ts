@@ -45,6 +45,8 @@ export class HomeComponent implements OnInit {
   isOpen: boolean = false;
   calendarData: Calendar[] = [];
   boardClass: string = '';
+  dialogOpen: boolean = false;
+  dialogFormOpen: boolean = false;
   constructor(private service: DataService) {
     this.cards = [
       {
@@ -84,7 +86,15 @@ export class HomeComponent implements OnInit {
     this.getTable();
     this.getTasks();
     this.getActions();
-    this.getCalendar()
+    this.getCalendar();
+  }
+
+  openDialog() {
+    this.dialogOpen = true;
+  }
+
+  openFormDialog(){
+    this.dialogFormOpen = true
   }
 
   toggleSidebar() {

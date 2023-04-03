@@ -306,10 +306,20 @@
         top: 47.5%;
         right: -10px;
         transform: translateY(-50%);
-
         cursor: pointer;
       }
     }
+  }
+}
+
+.quick-view {
+  margin-left: 20px;
+  margin-right: 26px;
+  
+  p {
+    padding-top: 25px;
+    color: var(--text-dark);
+    @include m.text(14px, "normal", 400, 16.5px);
   }
 }
 

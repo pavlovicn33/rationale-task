@@ -10,7 +10,8 @@ import { CardComponent } from './components/card/card.component';
 import { SharedModule } from 'src/shared/shared.module';
 import { ItemsComponent } from './items/items.component';
 import { ActionsComponent } from './actions/actions.component';
-import { BoardComponent } from './board/board.component';
+import { BoardComponent } from './components/board/board.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { BoardComponent } from './board/board.component';
     ItemsComponent,
     ActionsComponent,
     BoardComponent,
+    DialogComponent,
   ],
   imports: [
     SharedModule,
