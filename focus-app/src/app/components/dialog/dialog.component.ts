@@ -54,11 +54,16 @@ export class DialogComponent implements OnInit {
   isOpen = false;
   @Input() title: string = '';
   @Output() closed = new EventEmitter();
-
+  @Output() submitted = new EventEmitter();
+  
   constructor() {}
   ngOnInit(): void {}
 
   close() {
     this.closed.emit();
+  }
+
+  sendSubmit() {
+    this.submitted.emit()
   }
 }

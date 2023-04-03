@@ -312,10 +312,96 @@
   }
 }
 
+.item-form {
+  padding-top: 30px;
+  color: var(--text-dark);
+  margin-left: 20px;
+  margin-right: 20px;
+  label {
+    @include m.text(12px, "normal", 500, 16.5px);
+  }
+
+  textarea {
+    border: 1px solid #88859c;
+    border-radius: 3px;
+    resize: none;
+    height: 79px;
+    width: 100%;
+  }
+
+  input {
+    height: 30px;
+    border: 1px solid #88859c;
+    border-radius: 3px;
+  }
+
+  .itemTitle {
+    text-align: left;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .type-unit-container {
+    margin-top: 15px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 25px;
+    div {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .form-buttons {
+    margin-top: 15px;
+    @include m.text(12px, "normal", 500, 16.5px);
+    display: flex;
+    gap: 25px;
+
+    .radio-container {
+      width: 50%;
+      div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+
+    .checkbox-container {
+      width: 50%;
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+  }
+}
+
+.error {
+  @include m.text(12px, "normal", 500, 16.5px);
+  color: var(--red);
+}
+
+.errors-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  p {
+    width: 50%;
+  }
+}
+
 .quick-view {
   margin-left: 20px;
   margin-right: 26px;
-  
+
   p {
     padding-top: 25px;
     color: var(--text-dark);

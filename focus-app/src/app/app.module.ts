@@ -12,6 +12,7 @@ import { ItemsComponent } from './items/items.component';
 import { ActionsComponent } from './actions/actions.component';
 import { BoardComponent } from './components/board/board.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     DialogComponent,
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     BrowserModule,
     AppRoutingModule,

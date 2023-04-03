@@ -12,7 +12,7 @@
         <img
           width="12px"
           height="12px"
-          (click)="test()"
+          (click)="exit()"
           src="../../assets/icons/exit.png"
           alt=""
         />
@@ -204,8 +204,154 @@
   </div>
 </app-dialog>
 <app-dialog
+  (submitted)="submitForm()"
   *ngIf="dialogFormOpen"
   title="Create Quick Item"
   (closed)="dialogFormOpen = false"
 >
+  <div>
+    <form
+      novalidate
+      class="item-form"
+      [formGroup]="quickItemForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="itemTitle">
+        <label for="">Item Title</label>
+        <br />
+        <input formControlName="itemTitle" type="text" />
+      </div>
+      <p
+        class="error"
+        *ngIf="this.q['itemTitle'].errors?.['required'] && showError"
+      >
+        Item Title is required.
+      </p>
+      <div class="type-unit-container">
+        <div>
+          <label for="">Type</label>
+          <br />
+          <input formControlName="type" type="text" />
+          <br />
+          <p
+            class="error"
+            *ngIf="this.q['type'].errors?.['required'] && showError"
+          >
+            Type is required.
+          </p>
+        </div>
+        <div>
+          <label for="">Business Unit</label>
+          <br />
+          <input formControlName="businessUnit" type="text" />
+          <br />
+          <p
+            class="error"
+            *ngIf="this.q['businessUnit'].errors?.['required'] && showError"
+          >
+            Business Unit is required.
+          </p>
+        </div>
+      </div>
+      <div class="type-unit-container">
+        <div>
+          <label for="">Due Date</label>
+          <input formControlName="dueDate" type="text" />
+          <p
+            class="error"
+            *ngIf="this.q['dueDate'].errors?.['required'] && showError"
+          >
+            Due Date is required.
+          </p>
+        </div>
+        <div>
+          <label for="">Priority</label>
+          <input formControlName="priority" type="text" />
+          <p
+            class="error"
+            *ngIf="this.q['priority'].errors?.['required'] && showError"
+          >
+            Priority is required.
+          </p>
+        </div>
+      </div>
+      <div class="form-buttons">
+        <div class="radio-container">
+          <label>
+            Job Title
+            <div>
+              <input
+                formControlName="jobTitle"
+                value="Marketing Coordinator"
+                type="radio"
+              />
+              <span>Marketing Coordinator</span>
+            </div>
+          </label>
+          <label>
+            <div>
+              <input
+                formControlName="jobTitle"
+                value="Web Designer"
+                type="radio"
+              />
+              <span>Web Designer</span>
+            </div>
+          </label>
+          <label>
+            <div>
+              <input
+                formControlName="jobTitle"
+                value="President of Sales"
+                type="radio"
+              />
+              <span>President of Sales</span>
+            </div>
+          </label>
+        </div>
+        <div class="checkbox-container">
+          Languages
+          <div *ngFor="let data of options; let i = index">
+            <input
+              type="checkbox"
+              [value]="data"
+              (change)="onCheckboxChange($event)"
+            />
+            <label for="">{{ data }}</label>
+          </div>
+        </div>
+      </div>
+      <div class="errors-box">
+        <p
+          class="error"
+          *ngIf="this.q['jobTitle'].errors?.['required'] && showError"
+        >
+          Job Title is required.
+        </p>
+        <p
+          class="error"
+          *ngIf="this.q['languages'].errors?.['required'] && showError"
+        >
+          Language is required, select atleast one value.
+        </p>
+      </div>
+      <div [style.margin-top]="'6px'">
+        <label for="">Objective</label>
+        <textarea
+          formControlName="objective"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
+      </div>
+      <p
+        class="error"
+        *ngIf="this.q['objective'].errors?.['required'] && showError"
+      >
+        Objective is required.
+      </p>
+    </form>
+    
+  </div>
 </app-dialog>

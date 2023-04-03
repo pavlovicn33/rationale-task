@@ -11,6 +11,14 @@ import {
   transition,
 } from '@angular/animations';
 import { Calendar, Calendars } from 'src/shared/models/calendar';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -47,7 +55,26 @@ export class HomeComponent implements OnInit {
   boardClass: string = '';
   dialogOpen: boolean = false;
   dialogFormOpen: boolean = false;
-  constructor(private service: DataService) {
+  quickItemForm: FormGroup;
+  allowSubmit: boolean = false;
+  showError: boolean = false;
+  options: string[] = ['Spanish', 'Chinese', 'Arabic'];
+  constructor(
+    private service: DataService,
+    private fb: FormBuilder,
+    private sanitizer: DomSanitizer
+  ) {
+    this.quickItemForm = this.fb.group({
+      itemTitle: ['', [Validators.required]],
+      type: ['', [Validators.required]],
+      businessUnit: ['', [Validators.required]],
+      dueDate: ['', [Validators.required]],
+      priority: ['', [Validators.required]],
+      jobTitle: ['', [Validators.required]],
+      languages: this.fb.array([], [Validators.required]),
+      objective: ['', [Validators.required]],
+    });
+
     this.cards = [
       {
         icon: 'meetings',
@@ -89,12 +116,30 @@ export class HomeComponent implements OnInit {
     this.getCalendar();
   }
 
+  onCheckboxChange(e: any) {
+    const checkArray: FormArray = this.quickItemForm.get(
+      'languages'
+    ) as FormArray;
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: any) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
+
   openDialog() {
     this.dialogOpen = true;
   }
 
-  openFormDialog(){
-    this.dialogFormOpen = true
+  openFormDialog() {
+    this.dialogFormOpen = true;
   }
 
   toggleSidebar() {
@@ -102,7 +147,7 @@ export class HomeComponent implements OnInit {
     this.isOpen = !this.isOpen;
   }
 
-  test() {
+  exit() {
     this.isOpen = false;
     this.boardClass = 'sidebar-closed';
   }
@@ -131,6 +176,10 @@ export class HomeComponent implements OnInit {
     return code;
   }
 
+  get q() {
+    return this.quickItemForm.controls;
+  }
+
   getTasks() {
     this.service.getTasks().subscribe((data: Tasks) => {
       this.tasks = data.tasks;
@@ -146,5 +195,31 @@ export class HomeComponent implements OnInit {
     this.service.getCalendars().subscribe((data: Calendars) => {
       this.calendarData = data.calendar;
     });
+  }
+
+  submitForm() {
+    this.showError = true;
+    if (this.quickItemForm.invalid) {
+      return;
+    }
+    console.log(this.quickItemForm.value);
+    let obj = JSON.stringify(this.quickItemForm.value);
+    let element = document.createElement('a');
+    element.setAttribute('href', "data:text/json;charset=UTF-8," + encodeURIComponent(obj));
+    element.setAttribute('download', "form.json");
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    this.allowSubmit = true;
+    this.dialogFormOpen = false;
+    this.quickItemForm.reset();
+    return;
+  }
+
+  onSubmit() {
+    if (!this.allowSubmit) {
+      return;
+    }
   }
 }
