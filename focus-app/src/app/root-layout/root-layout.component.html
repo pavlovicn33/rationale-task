@@ -1,25 +1,25 @@
 <div class="sidenav">
   <div class="sidenav-buttons">
     <div class="pulse-icon">
-      <a [routerLink]="['home']">
+      <a [routerLinkActive]="['selected']" [routerLink]="['home']">
         <img src="../../assets/icons/pulse.png" alt="pulse" />
         <span>Pulse</span>
       </a>
     </div>
     <div>
-      <a [routerLink]="['meetings']"
+      <a [routerLinkActive]="['selected']" [routerLink]="['meetings']"
         ><img src="../../assets/icons/meetings.png" alt="meeeting" />
         <span>Meeting</span>
       </a>
     </div>
     <div>
-      <a [routerLink]="['items']"
+      <a [routerLinkActive]="['selected']" [routerLink]="['items']"
         ><img src="../../assets/icons/items.png" alt="items" />
         <span>Items</span>
       </a>
     </div>
     <div>
-      <a [routerLink]="['actions']"
+      <a [routerLinkActive]="['selected']" [routerLink]="['actions']"
         ><img src="../../assets/icons/actions.png" alt="actions" />
         <span>Actions</span>
       </a>

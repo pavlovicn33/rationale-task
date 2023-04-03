@@ -140,6 +140,7 @@ export class HomeComponent implements OnInit {
 
   openFormDialog() {
     this.dialogFormOpen = true;
+    this.showError = false
   }
 
   toggleSidebar() {
