@@ -10,6 +10,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { Calendar, Calendars } from 'src/shared/models/calendar';
 
 @Component({
   selector: 'app-home',
@@ -42,6 +43,7 @@ export class HomeComponent implements OnInit {
   tasks: Task[] = [];
   actions: Task[] = [];
   isOpen: boolean = false;
+  calendarData: Calendar[] = [];
   boardClass: string = '';
   constructor(private service: DataService) {
     this.cards = [
@@ -82,6 +84,7 @@ export class HomeComponent implements OnInit {
     this.getTable();
     this.getTasks();
     this.getActions();
+    this.getCalendar()
   }
 
   toggleSidebar() {
@@ -126,6 +129,12 @@ export class HomeComponent implements OnInit {
   getActions() {
     this.service.getActions().subscribe((data: Actions) => {
       this.actions = data.actions;
+    });
+  }
+
+  getCalendar() {
+    this.service.getCalendars().subscribe((data: Calendars) => {
+      this.calendarData = data.calendar;
     });
   }
 }

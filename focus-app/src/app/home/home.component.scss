@@ -219,6 +219,98 @@
       pointer-events: auto;
     }
   }
+
+  .sidebar-main {
+    margin-top: 38px;
+    margin-left: 39px;
+    margin-right: 20px;
+
+    ul {
+      list-style: none;
+      li::before {
+        content: "•";
+        color: #51abff;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        font-size: 16px;
+        margin-left: -1em;
+      }
+
+      li {
+        @include m.text(12px, "normal", 400, 12px);
+        color: #787878;
+        padding-top: 14px;
+      }
+
+      p {
+        @include m.text(12px, "normal", 500, 12px);
+        margin-top: 5px;
+        color: var(--blue);
+      }
+    }
+
+    .list {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .dates-status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fd688c33;
+        width: 65px;
+        height: 17px;
+        border-radius: 14px;
+        h2 {
+          @include m.text(12px, "normal", 500, 12px);
+          color: #fd688c;
+        }
+      }
+    }
+
+    .add-item {
+      margin-top: 22px;
+      margin-left: -1em;
+      h1 {
+        display: flex;
+        gap: 11px;
+        align-items: center;
+        @include m.text(12px, "normal", 500, 12px);
+        color: #787878;
+      }
+    }
+
+    .form-container {
+      margin-top: 17px;
+      margin-right: 20px;
+      margin-left: -1em;
+      label {
+        color: var(--text-dark);
+        @include m.text(12px, "normal", 500, 16.5px);
+      }
+
+      input {
+        margin-bottom: 20px;
+        border: 1px solid #88859c;
+        border-radius: 3px;
+        height: 30px;
+        width: 301px;
+      }
+      div {
+        position: relative;
+      }
+      img {
+        position: absolute;
+        top: 47.5%;
+        right: -10px;
+        transform: translateY(-50%);
+
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .sidebar-open {
@@ -241,8 +333,8 @@
   }
 }
 @media screen and (max-width: 1650px) {
-  .sidebar-boards{
-    gap: 26px ;
+  .sidebar-boards {
+    gap: 26px;
   }
 }
 @media screen and (max-width: 1500px) {

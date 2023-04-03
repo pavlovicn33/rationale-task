@@ -17,6 +17,38 @@
           alt=""
         />
       </div>
+      <div class="sidebar-main">
+        <ul>
+          <div class="list" *ngFor="let i of calendarData">
+            <li>
+              {{ i.name }}
+              <p>{{ i.date | date : "dd.MM.yyyy" }}</p>
+            </li>
+            <div *ngIf="i.status" class="dates-status">
+              <h2>{{ i.status }}</h2>
+            </div>
+          </div>
+        </ul>
+        <div class="add-item">
+          <h1>
+            <span><img src="../../assets/icons/plus.png" alt="plus" /></span>
+            Add New Item
+          </h1>
+        </div>
+        <div class="form-container">
+          <form>
+            <div>
+              <label for="name">Meeting Name</label>
+              <input type="text" />
+            </div>
+            <div>
+              <label for="date">Date</label>
+              <input type="text" />
+              <img src="../../assets/icons/calendar.png" alt="calendar">
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
   <div class="header">
@@ -118,7 +150,7 @@
     </table>
   </div>
   <div class="section-2">
-    <div [ngClass]="{ 'sidebar-boards': isOpen }"  class="board-container">
+    <div [ngClass]="{ 'sidebar-boards': isOpen }" class="board-container">
       <app-board
         [boardClass]="boardClass"
         [boardData]="tasks"
